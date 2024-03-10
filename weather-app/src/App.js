@@ -1,11 +1,15 @@
 import React ,{usestate} from 'react'
+import Navbar from './Navbar';
 //import axios from 'axios'
+
 
 //const url = `https://api.openweathermap.org/data/2.5/weather?q=London&appid=e0261b5f20b3e6e2e41a909af65afc3b`
 
 function App() {
   return (
-    <div className="App">
+    <>
+      <div className="App">
+       <Navbar/>
        <div className="container">
          <div className="top">
            <div className="location">
@@ -42,6 +46,7 @@ function App() {
          </div>
        </div>
     </div>
+  </>
   );
 }
 

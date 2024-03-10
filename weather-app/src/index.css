@@ -1,4 +1,6 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap');
+
 *{
     box-sizing: border-box;
     margin: 0;
@@ -7,7 +9,7 @@
 
 
 body {
-    font-family: 'Outfit', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    font-family: 'Roboto Condensed', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -41,7 +43,6 @@ h1{
 
 .container {
     /* max-width: 700px; */
-    height: 500px;
     margin: auto;
     padding : 0.1rem;
     position : relative;
@@ -49,7 +50,7 @@ h1{
     margin-left: 25px;
     display : flex;
     flex-direction: column;
-    justify-content: space-between;
+    
 
 }
 
@@ -66,12 +67,28 @@ h1{
 }
 
 .App .bottom{
+    height: 100px;
     display: flex;
     justify-content: space-evenly;
     text-align: center;
     border-radius: 15px ;
     background-color: rgba(255, 255, 255, 0.2);
-    margin-right: 20px;
+    margin-right: -93px;
+    font-weight: bold;
+    padding-top: 5px;
 }   
 
- 
+@media (max-width: 601px) {
+    .container{
+        top: 0;
+        max-width: 700px;
+    }
+    .App .bottom {
+      flex-wrap: wrap; /* Allow items to wrap to the next line */
+      justify-content: center; /* Center items on smaller screens */
+      margin-right: 0; /* Remove right margin on smaller screens */
+    }
+    .App .bottom > * {
+        margin-bottom: 10px; /* Add space between items on smaller screens */
+      }
+    }
