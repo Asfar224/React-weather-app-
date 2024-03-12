@@ -3,7 +3,7 @@ import React from 'react'
 function Navbar() {
     return (
         <>
-            <nav style={{height: '47px' , backgroundColor: 'rgba(0, 0, 0, 0.5)'}} class="navbar navbar-expand-lg " >
+            <nav style={{height: '47px' , backgroundColor: 'rgba(0, 0, 0, 0.4)'}} class="navbar navbar-expand-lg " >
                 <div className="container-fluid">
                     <a className="navbar-brand" style={{color : 'white'}} href="#">Weather App</a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
