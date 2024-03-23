@@ -40,34 +40,34 @@ function App() {
        <div className="container">
          <div className="top">
            <div className="location">
-               <p>lahore</p>
+               <p>{data.name}</p>
            </div>
            <div className = "temp">
-              <h1>65</h1>
+              {data.main ? <h1>{data.main.temp} F</h1> : null}
            </div>
            <div className ="description">
-              <p>cloudy</p>
+              {data.weather ? <p>{data.weather[0].main}</p> : null}
            </div>
          </div>
          <div className="bottom">
            <div className = "feelings">
-              <p>64</p>
+             {data.main ? <p>{data.main.feels_like} F</p> : null}
               <p>Feels like</p>
            </div>
            <div className = "humidity">
-              <p>20%</p>
+              {data.main ? <p>{data.main.humidity} %</p> : null}
               <p>Humidity</p>
            </div>
            <div className ="wind">
-              <p>12mh</p>
+             {data.wind ? <p>{data.wind.speed} mh</p> : null} 
               <p>Wind speed</p>
            </div>
            <div className="Maxtemp">
-             <p>70</p>
+             {data.main ? <p>{data.main.temp_max} F</p> : null}
              <p>Max Temp</p>
            </div>
            <div className="Mintemp">
-             <p>60</p>
+             {data.main ? <p>{data.main.temp_min} F</p> : null}
              <p>Min Temp</p>
            </div>
          </div>
