@@ -13,10 +13,13 @@ function App() {
   const SearchLocation = (event)=>{
         if(event.key === 'Enter'){
            axios.get(url).then((response)=>{
-             setData(response.data)
-             console.log(response.data)
+             setData(response.data);
+             console.log(response.data);
            })
-           SetLocation('')
+           .catch((error) => {
+            console.error('Error:', error);
+          });
+          SetLocation('');
         }
   }
 
@@ -26,10 +29,11 @@ function App() {
        <Navbar/>
        <div className='Searchbar'> 
        <input
+       value={location}
        placeholder='Enter location'
        onChange={event => SetLocation(event.target.value)}
        type='text'
-       onKeyPress={SearchLocation}
+       onKeyPress = {SearchLocation}
       />
       </div>
       
