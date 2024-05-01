@@ -59,10 +59,10 @@ function App() {
            </div>
            <div className = "temp">
               {data.main  && (
-                <h1>
-           {mode === 'Fahrenheit'
-             ? `${data.main.temp} F`
-             : `${convert_to_Celsius(data.main.temp)} C` }</h1> )}
+              <h1>
+              {mode === 'Fahrenheit'
+                ? `${data.main.temp} F`
+                : `${convert_to_Celsius(data.main.temp)} C`}</h1> )}
            </div>
            <div className ="description">
               {data.weather ? <p>{data.weather[0].main}</p> : null}
@@ -70,7 +70,11 @@ function App() {
          </div>
          <div className="bottom">
            <div className = "feelings">
-             {data.main ? <p>{data.main.feels_like} F</p> : null}
+              {data.main ? (
+            <p>
+              {mode === 'Fahrenheit'
+                ? `${data.main.feels_like} F`
+                : `${convert_to_Celsius(data.main.feels_like)} C`} </p> )  : null}
               <p>Feels like</p>
            </div>
            <div className = "humidity">
