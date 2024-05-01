@@ -19,7 +19,7 @@ function Navbar(props) {
                             </li>
                         </ul>
                         <form className="d-flex" role="search">
-                                <button className="btn btn-outline-success" type="submit"  onClick={props.temperature_converion()}>{props.currentstate === 'fahrenheit' ? 'Convert to Celcius' : 'Convert to fahrenheit' }</button>
+                                <button className="btn btn-outline-success" type="button"  onClick={props.temperature_converion}>{props.currentstate === 'Fahrenheit' ? 'Convert to Celcius' : 'Convert to Fahrenheit' }</button>
                         </form>
                     </div>
                 </div>

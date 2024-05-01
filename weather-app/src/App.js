@@ -10,37 +10,18 @@ function App() {
   const [mode , setmode] = useState('Fahrenheit');
   
   const apiKey = process.env.REACT_APP_WEATHER_API_KEY;
-  console.log(apiKey);
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}`
+  console.log(mode);
 
   const convert_to_Fahrenheit =  (temp) =>{
-    return (temp * 9) / 5 + 32;
+    return (temp * 9 / 5) + 32;
   }
 
   const convert_to_Celsius = (temp) =>{
-    return ((temp - 32) * 5) / 9;
+    return ((temp - 32)* 5 / 9).toFixed(1);
   }
   
   const temperature_converion = () =>{
-    setData((prevData)=>{
-      if (!prevData || !prevData.main) {
-        return prevData;
-      }
-      const newData = { ...prevData };
-      if (mode === 'Fahrenheit') {
-        newData.main.temp = convert_to_Celsius(newData.main.temp);
-        newData.main.feels_like = convert_to_Celsius(newData.main.feels_like);
-        newData.main.temp_max = convert_to_Celsius(newData.main.temp_max);
-        newData.main.temp_min = convert_to_Celsius(newData.main.temp_min);
-      } else {
-        newData.main.temp = convert_to_Fahrenheit(newData.main.temp);
-        newData.main.feels_like = convert_to_Fahrenheit(newData.main.feels_like);
-        newData.main.temp_max = convert_to_Fahrenheit(newData.main.temp_max);
-        newData.main.temp_min = convert_to_Fahrenheit(newData.main.temp_min);
-      }
-      return newData;
-    });
-     
     setmode((prevMode) => (prevMode === 'Fahrenheit' ? 'Celsius' : 'Fahrenheit'));
   };
   
@@ -48,6 +29,7 @@ function App() {
         if(event.key === 'Enter'){
            axios.get(url).then((response)=>{
              setData(response.data);
+             console.log(response.data);
            })
            .catch((error) => {
             console.error('Error:', error);
@@ -76,7 +58,11 @@ function App() {
                <p>{data.name}</p>
            </div>
            <div className = "temp">
-              {data.main ? <h1>{data.main.temp} F</h1> : null}
+              {data.main  && (
+                <h1>
+           {mode === 'Fahrenheit'
+             ? `${data.main.temp} F`
+             : `${convert_to_Celsius(data.main.temp)} C` }</h1> )}
            </div>
            <div className ="description">
               {data.weather ? <p>{data.weather[0].main}</p> : null}
