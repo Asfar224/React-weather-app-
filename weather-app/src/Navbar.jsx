@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Navbar() {
+function Navbar(props) {
     return (
         <>
             <nav style={{height: '47px' , backgroundColor: 'rgba(0, 0, 0, 0.4)'}} class="navbar navbar-expand-lg " >
@@ -19,7 +19,7 @@ function Navbar() {
                             </li>
                         </ul>
                         <form className="d-flex" role="search">
-                                <button className="btn btn-outline-success" type="submit">Convert to Celcius</button>
+                                <button className="btn btn-outline-success" type="submit"  onClick={props.temperature_converion()}>{props.currentstate === 'fahrenheit' ? 'Convert to Celcius' : 'Convert to fahrenheit' }</button>
                         </form>
                     </div>
                 </div>

@@ -7,17 +7,47 @@ function App() {
  
   const [data, setData] = useState({});
   const [location, SetLocation] = useState('');
-  const [] = useState();
+  const [mode , setmode] = useState('Fahrenheit');
   
   const apiKey = process.env.REACT_APP_WEATHER_API_KEY;
   console.log(apiKey);
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}`
 
+  const convert_to_Fahrenheit =  (temp) =>{
+    return (temp * 9) / 5 + 32;
+  }
+
+  const convert_to_Celsius = (temp) =>{
+    return ((temp - 32) * 5) / 9;
+  }
+  
+  const temperature_converion = () =>{
+    setData((prevData)=>{
+      if (!prevData || !prevData.main) {
+        return prevData;
+      }
+      const newData = { ...prevData };
+      if (mode === 'Fahrenheit') {
+        newData.main.temp = convert_to_Celsius(newData.main.temp);
+        newData.main.feels_like = convert_to_Celsius(newData.main.feels_like);
+        newData.main.temp_max = convert_to_Celsius(newData.main.temp_max);
+        newData.main.temp_min = convert_to_Celsius(newData.main.temp_min);
+      } else {
+        newData.main.temp = convert_to_Fahrenheit(newData.main.temp);
+        newData.main.feels_like = convert_to_Fahrenheit(newData.main.feels_like);
+        newData.main.temp_max = convert_to_Fahrenheit(newData.main.temp_max);
+        newData.main.temp_min = convert_to_Fahrenheit(newData.main.temp_min);
+      }
+      return newData;
+    });
+     
+    setmode((prevMode) => (prevMode === 'Fahrenheit' ? 'Celsius' : 'Fahrenheit'));
+  };
+  
   const SearchLocation = (event)=>{
         if(event.key === 'Enter'){
            axios.get(url).then((response)=>{
              setData(response.data);
-             console.log(response.data);
            })
            .catch((error) => {
             console.error('Error:', error);
@@ -29,7 +59,7 @@ function App() {
   return (
     <>
       <div className="App">
-       <Navbar/>
+       <Navbar currentstate = {mode} temperature_converion = {temperature_converion}/>
        <div className='Searchbar'> 
        <input
        value={location}
