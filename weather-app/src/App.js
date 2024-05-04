@@ -86,11 +86,19 @@ function App() {
               <p>Wind speed</p>
            </div>
            <div className="Maxtemp">
-             {data.main ? <p>{data.main.temp_max} F</p> : null}
+           {data.main ? (
+            <p>
+              {mode === 'Fahrenheit'
+                ? `${data.main.temp_max} F`
+                : `${convert_to_Celsius(data.main.temp_max)} C`} </p> )  : null}
              <p>Max Temp</p>
            </div>
            <div className="Mintemp">
-             {data.main ? <p>{data.main.temp_min} F</p> : null}
+           {data.main ? (
+            <p>
+              {mode === 'Fahrenheit'
+                ? `${data.main.temp_min} F`
+                : `${convert_to_Celsius(data.main.temp_min)} C`} </p> )  : null}
              <p>Min Temp</p>
            </div>
          </div>
